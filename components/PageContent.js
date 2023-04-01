@@ -5,7 +5,7 @@ import Slider from "./Slider";
 const PageContent = ({ data }) => {
   return (
     <>
-      {data.keywords.results && (
+      {/*  {data.keywords.results && (
         <div
           id="keywords"
           className="flex flex-row flex-wrap text-white justify-center lg:justify-start items-center lg:ml-26 max-w-full"
@@ -21,7 +21,7 @@ const PageContent = ({ data }) => {
             </p>
           ))}
         </div>
-      )}
+      )} */}
       {data.credits.cast && data.credits.cast.length != 0 && (
         <div id="cast">
           {data.credits.cast.length > 5 ? (

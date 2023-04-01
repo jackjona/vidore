@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 
 const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
-  console.log(data.backdrop_path);
   return (
     <div
       id="hero"
@@ -24,11 +23,17 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
         width="320px"
         height="480px"
       />
-      <div className="relative lg:pl-20 py-20">
+      <div className="flex flex-col relative lg:pl-20 py-20 items-center lg:items-start">
         <p className="max-w-xl text-6xl font-extrabold">
           {data.name ? data.name : data.original_title}
         </p>
-        <div className="flex justify-center lg:justify-start items-center my-6">
+        {data.original_name && (
+          <p className="max-w-xl text-lg text-gray-200 font-normal mt-2">
+            <span className="font-semibold">Original Name:</span>{" "}
+            {data.original_name}
+          </p>
+        )}
+        <div className="flex justify-center lg:justify-start items-center mt-6 mb-4">
           <div className="flex items-center font-normal">
             <svg
               width="24"
@@ -46,24 +51,40 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               {Math.round(data.vote_average * 100) / 100}
             </p>
           </div>
-          <p className="text-lg mx-2">•</p>
+          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
-            {data.vote_count} Reviews
+            {data.vote_count}
+            {data.vote_count === "1" ? " Review" : " Reviews"}
           </p>
-          <p className="text-lg mx-2">•</p>
+          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
             {data.first_air_date && data.first_air_date.split("-")[0]}
             {data.release_date && data.release_date.split("-")[0]}
           </p>
           {data.content_ratings && data.content_ratings.results[0] && (
             <>
-              <p className="text-lg mx-2">•</p>
-              <p className="bg-slate-800 px-2 py-1 rounded-lg text-sm font-semibold">
+              <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
+              <p className="border-2 border-gray-200 px-1 py-0 rounded-md text-sm font-semibold">
                 {data.content_ratings.results[0].rating}
               </p>
             </>
           )}
         </div>
+        {data.keywords.results && (
+          <div
+            id="keywords"
+            className="hidden sm:flex flex-row flex-wrap text-gray-200 text-xs justify-center lg:justify-start items-center max-w-xl mt-2 mb-4 "
+          >
+            {data.keywords.results.map((data, i) => (
+              <p
+                key={i}
+                className="bg-slate-800 mt-2 lg:mt-1 mr-2 p-2 rounded-md font-semibold capitalize"
+              >
+                {data.name}
+              </p>
+            ))}
+          </div>
+        )}
         <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg font-medium">
           {data.overview}
         </p>
@@ -112,12 +133,6 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               </p>
             </>
           )}
-          {data.original_name && (
-            <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-              <span className="font-semibold">Original Name:</span>{" "}
-              {data.original_name}
-            </p>
-          )}
           <p className="max-w-sm max-h-48 text-md text-gray-200 font-normal my-1">
             <span className="font-semibold">Production:</span>{" "}
             {data.production_companies.map((data, i) => (
@@ -130,8 +145,12 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
         </div>
 
         {provider.results.US && (
-          <div className="mt-2">
-            <b>Streaming Now On:</b>
+          <div id="providerOptions" className="mt-2">
+            <b>
+              {provider.results.US.flatrate
+                ? "Streaming Now On:"
+                : "Buy/Rent On:"}
+            </b>
             <Link
               href={`https://www.justwatch.com/us/search?q=${
                 data.name ? data.name : data.original_title
@@ -141,9 +160,27 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               className="flex mt-2"
             >
               <div className="flex justify-center lg:justify-start items-center w-full">
-                {/* Show streaming options in the US region */}
+                {/* Show streaming/purchase options in the US region */}
                 {provider.results.US.flatrate &&
                   provider.results.US.flatrate.slice(0, 5).map((data, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col justify-center items-center text-center ml-10 first:ml-0 "
+                    >
+                      <img
+                        className="rounded-lg"
+                        width="48px"
+                        height="48px"
+                        src={`https://image.tmdb.org/t/p/w200${data.logo_path}`}
+                        alt=""
+                      />
+
+                      <p>{data.provider_name}</p>
+                    </div>
+                  ))}
+                {!provider.results.US.flatrate &&
+                  provider.results.US.buy &&
+                  provider.results.US.buy.slice(0, 5).map((data, i) => (
                     <div
                       key={i}
                       className="flex flex-col justify-center items-center text-center ml-10 first:ml-0 "

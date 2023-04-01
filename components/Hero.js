@@ -11,6 +11,7 @@ const HomeHero = ({ data }) => {
         className="absolute left-0 top-0 object-cover w-full h-full max-h-[36rem] md:max-h-[55rem] opacity-50 blur-sm z-0"
         src={`https://image.tmdb.org/t/p/w1280/${data.backdrop_path}`}
         alt=""
+        aria-label="Go back home"
       />
       <Link
         href={`/${data.media_type}/${data.id}`}
@@ -28,10 +29,10 @@ const HomeHero = ({ data }) => {
         />
       </Link>
       <div className="relative md:ml-20 my-20 mx-2 md:pl-2 text-center md:text-left">
-        <p className="md:flex md:flex-wrap max-w-xl text-3xl md:text-5xl xl:text-6xl font-extrabold">
+        <p className="md:flex md:flex-wrap max-w-xl text-4xl md:text-5xl xl:text-6xl font-extrabold">
           {data.name ? data.name : data.original_title}
         </p>
-        <div className="flex justify-center md:justify-start my-6">
+        <div className="flex justify-center md:justify-start items-center my-6">
           <div className="flex justify-center items-center font-normal ">
             {/*    <img src="./tmbd.svg" width="32" height="32" alt=""/> */}
             <svg
@@ -50,11 +51,12 @@ const HomeHero = ({ data }) => {
               {Math.round(data.vote_average * 100) / 100}
             </p>
           </div>
-          <p className="text-lg mx-2">•</p>
+          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
-            {data.vote_count} Reviews
+            {data.vote_count}
+            {data.vote_count === "1" ? " Review" : " Reviews"}
           </p>
-          <p className="text-lg mx-2">•</p>
+          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
             {data.first_air_date
               ? data.first_air_date.split("-")[0]

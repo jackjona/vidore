@@ -16,11 +16,11 @@ const Header = () => {
             />
           </Link>
           <div className="flex justify-between items-center order-1">
-            <ul className="flex flex-row lg:space-x-8 mt-0 font-medium">
+            <ul className="flex flex-row lg:space-x-8 mt-0 text-xl text-white font-bold">
               <li>
                 <Link
                   href="/"
-                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 text-white hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
+                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
                 >
                   Home
                 </Link>
@@ -28,7 +28,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/about"
-                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 text-white hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
+                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
                 >
                   About
                 </Link>
@@ -36,7 +36,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/search"
-                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 text-white hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
+                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
                 >
                   Search
                 </Link>
@@ -44,7 +44,7 @@ const Header = () => {
               {/*               <li>
                 <Link
                   href="/contact"
-                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 text-white hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
+                  className="block py-2 pr-4 pl-3 border-b lg:border-0 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent border-gray-700 transition-all duration-100 ease-in-out"
                 >
                   Contact
                 </Link>

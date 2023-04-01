@@ -93,7 +93,7 @@ const Slug = ({ data }) => {
         {data.images.profiles.length != 0 && (
           <div
             id="profile-images"
-            className="flex flex-wrap justify-center items-center"
+            className="flex flex-wrap justify-center lg:justify-start items-center"
           >
             {data.images.profiles.length > 5 ? (
               <>
@@ -167,7 +167,7 @@ const Slug = ({ data }) => {
                   {data.combined_credits.cast.map((cast, i) => (
                     <div
                       key={i}
-                      className="snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out h-[26rem] min-h-[26rem] hover:h-full pb-4"
+                      className="snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out h-[26rem] min-h-[29rem] hover:h-full pb-4"
                     >
                       <Link href={`/${cast.media_type}/${cast.id}`}>
                         <img
@@ -184,7 +184,9 @@ const Slug = ({ data }) => {
                         />
                         <div className="text-white px-3 pt-2 w-32">
                           <p className="text-xl font-bold w-36">
-                            {cast.title ? cast.title : cast.original_title}
+                            {cast.title
+                              ? cast.title
+                              : cast.original_title || cast.name}
                             <span className="pl-2 text-sm text-gray-300 italic">
                               {cast.release_date &&
                                 `(${cast.release_date.split("-")[0]})`}
