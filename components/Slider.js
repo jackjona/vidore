@@ -30,7 +30,11 @@ const Slider = ({ children, type, location }) => {
       >
         <div className={`flex mx-3 items-center ${height}`}>
           <div className="w-10 h-10 text-white">
-            <img src="/left-chevron.svg" className="text-white" />
+            <img
+              src="/left-chevron.svg"
+              className="text-white"
+              alt="left slide indicator"
+            />
           </div>
         </div>
       </button>
@@ -47,7 +51,11 @@ const Slider = ({ children, type, location }) => {
       >
         <div className={`flex mx-3 items-center ${height}`}>
           <div className="w-10 h-10 text-white">
-            <img src="/right-chevron.svg" className="text-white" />
+            <img
+              src="/right-chevron.svg"
+              className="text-white"
+              alt="right slide indicator"
+            />
           </div>
         </div>
       </button>

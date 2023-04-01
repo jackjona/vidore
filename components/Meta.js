@@ -40,7 +40,6 @@ const Meta = (props) => {
         href="/favicon-16x16.png"
       />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#121212" />
-      <link rel="manifest" href="/manifest.webmanifest" />
       <meta name="msapplication-TileColor" content="#121212" />
       <meta name="theme-color" content="#881337" />
       <meta property="og:title" content="Vidore" />

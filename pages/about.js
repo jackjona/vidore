@@ -32,7 +32,7 @@ const About = () => {
               <h2>Vidore is a modern video discovery and streaming website.</h2>
               <br />
               <div className="flex flex-col justify-center items-center text-gray-300 text-sm">
-                <img src="/tmbd.svg" width="96" height="96" />
+                <img src="/tmbd.svg" width="96" height="96" alt="" />
                 <p>
                   This product uses the TMDB API but is not endorsed or
                   certified by{" "}
@@ -48,7 +48,7 @@ const About = () => {
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center mt-6 lg:mt-4 text-gray-300 text-sm">
-                <img src="/justwatch.svg" width="120" height="120" />
+                <img src="/justwatch.svg" width="120" height="120" alt="" />
                 <p>
                   Streaming service data from JustWatch. Visit{" "}
                   <Link

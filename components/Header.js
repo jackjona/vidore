@@ -9,8 +9,10 @@ const Header = () => {
           <Link href="/" className="flex items-center">
             <img
               src="/logo.png"
-              className="ml-3 w-32 h-[26px]"
-              alt="Vidore Logo"
+              width="128px"
+              height="26px"
+              className="ml-3"
+              alt=""
             />
           </Link>
           <div className="flex justify-between items-center order-1">

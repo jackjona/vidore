@@ -2,7 +2,7 @@ import Meta from "@/components/Meta";
 import Slider from "@/components/Slider";
 import Link from "next/link";
 
-const Slug = ({ data, provider }) => {
+const Slug = ({ data }) => {
   return (
     <>
       <Meta />

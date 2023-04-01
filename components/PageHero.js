@@ -153,6 +153,7 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
                         width="48px"
                         height="48px"
                         src={`https://image.tmdb.org/t/p/w200${data.logo_path}`}
+                        alt=""
                       />
 
                       <p>{data.provider_name}</p>
@@ -161,7 +162,7 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               </div>
             </Link>
             {/* <div className="flex flex-col justify-center items-center lg:items-start mt-6 lg:mt-4 text-gray-300 text-sm italic">
-              <img src="/justwatch.svg" width="120" height="120" />
+              <img src="/justwatch.svg" width="120" height="120" alt=""/>
               <p>
                 Streaming service data from JustWatch. Visit{" "}
                 <Link

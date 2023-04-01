@@ -12,7 +12,12 @@ const HomeHero = ({ data }) => {
         src={`https://image.tmdb.org/t/p/w1280/${data.backdrop_path}`}
         alt=""
       />
-      <Link href={`/${data.media_type}/${data.id}`}>
+      <Link
+        href={`/${data.media_type}/${data.id}`}
+        aria-label={`View more details about this ${
+          data.media_type === "movie" ? "movie" : "TV show"
+        }`}
+      >
         <img
           className="hidden md:block rounded-lg drop-shadow-2xl w-[300px] h-[370px] lg:w-[320px] lg:h-[480px] mt-10 md:-mt-0 hover:scale-105 transition-all duration-500 ease-in-out"
           src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
@@ -28,7 +33,7 @@ const HomeHero = ({ data }) => {
         </p>
         <div className="flex justify-center md:justify-start my-6">
           <div className="flex justify-center items-center font-normal ">
-            {/*    <img src="./tmbd.svg" width="32" height="32" /> */}
+            {/*    <img src="./tmbd.svg" width="32" height="32" alt=""/> */}
             <svg
               width="24"
               height="24"
