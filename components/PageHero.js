@@ -23,11 +23,11 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
         width="320px"
         height="480px"
       />
-      <div className="flex flex-col relative lg:pl-20 py-20 items-center lg:items-start">
+      <div className="flex flex-col relative lg:pl-20 py-20 items-center lg:items-start max-w-sm sm:max-w-6xl">
         <p className="max-w-xl text-6xl font-extrabold">
           {data.name ? data.name : data.original_title}
         </p>
-        {data.original_name && (
+        {data.original_name != data.name && (
           <p className="max-w-xl text-lg text-gray-200 font-normal mt-2">
             <span className="font-semibold">Original Name:</span>{" "}
             {data.original_name}
@@ -51,44 +51,51 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               {Math.round(data.vote_average * 100) / 100}
             </p>
           </div>
-          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
+          <span id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></span>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
             {data.vote_count}
             {data.vote_count === "1" ? " Review" : " Reviews"}
           </p>
-          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
+          <span id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></span>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
             {data.first_air_date && data.first_air_date.split("-")[0]}
             {data.release_date && data.release_date.split("-")[0]}
           </p>
           {data.content_ratings && data.content_ratings.results[0] && (
             <>
-              <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
+              <span
+                id="divider"
+                className="bg-gray-400 w-[2px] h-5 mx-2"
+              ></span>
               <p className="border-2 border-gray-200 px-1 py-0 rounded-md text-sm font-semibold">
                 {data.content_ratings.results[0].rating}
               </p>
             </>
           )}
         </div>
+
         {data.keywords.results && (
           <div
             id="keywords"
             className="hidden sm:flex flex-row flex-wrap text-gray-200 text-xs justify-center lg:justify-start items-center max-w-xl mt-2 mb-4 "
           >
-            {data.keywords.results.map((data, i) => (
-              <p
-                key={i}
-                className="bg-slate-800 mt-2 lg:mt-1 mr-2 p-2 rounded-md font-semibold capitalize"
-              >
-                {data.name}
-              </p>
-            ))}
+            {data.keywords.results.map(
+              (keyword, i) =>
+                i < 8 && (
+                  <div
+                    key={i}
+                    className="bg-slate-800 mt-2 lg:mt-1 mr-2 p-2 rounded-md font-semibold capitalize"
+                  >
+                    {keyword.name}
+                  </div>
+                )
+            )}
           </div>
         )}
+
         <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg font-medium">
           {data.overview}
         </p>
-
         <div className="flex flex-col justify-center items-center lg:items-start mt-4">
           {movie && (
             <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
@@ -143,7 +150,6 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
             <span className="font-semibold">TMBD ID:</span> {data.id}
           </p>
         </div>
-
         {provider.results.US && (
           <div id="providerOptions" className="mt-2">
             <b>
@@ -159,13 +165,13 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               rel="noreferrer"
               className="flex mt-2"
             >
-              <div className="flex justify-center lg:justify-start items-center w-full">
+              <div className="flex flex-wrap sm:flex-nowrap justify-center lg:justify-start items-start w-full">
                 {/* Show streaming/purchase options in the US region */}
                 {provider.results.US.flatrate &&
                   provider.results.US.flatrate.slice(0, 5).map((data, i) => (
                     <div
                       key={i}
-                      className="flex flex-col justify-center items-center text-center ml-10 first:ml-0 "
+                      className="flex flex-col justify-center items-center text-center sm:ml-10 first:ml-0 w-full"
                     >
                       <img
                         className="rounded-lg"
@@ -183,7 +189,7 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
                   provider.results.US.buy.slice(0, 5).map((data, i) => (
                     <div
                       key={i}
-                      className="flex flex-col justify-center items-center text-center ml-10 first:ml-0 "
+                      className="flex flex-col justify-center items-center text-center sm:ml-10 first:ml-0 w-full"
                     >
                       <img
                         className="rounded-lg"

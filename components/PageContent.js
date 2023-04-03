@@ -1,27 +1,152 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import React from "react";
 import Slider from "./Slider";
 
-const PageContent = ({ data }) => {
+const PageContent = ({ data, type }) => {
+  const [seasonData, setSeasonData] = useState(null);
+  const [seasonNumber, setSeasonNumber] = useState(1);
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  const fetchData = async () => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/tv/${data.id}/season/${seasonNumber}?api_key=cf462bd4335ec8255cff20c070b1702a`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      setSeasonData(data);
+      setLoading(false);
+    } else {
+      setLoading(false);
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    try {
+      {
+        data && type === "tv" && fetchData();
+      }
+    } catch (error) {
+      setError(true);
+    }
+  }, [seasonNumber, data]);
+
+  const handleChange = (event) => {
+    setSeasonNumber(event.target.value);
+  };
+
   return (
-    <>
-      {/*  {data.keywords.results && (
-        <div
-          id="keywords"
-          className="flex flex-row flex-wrap text-white justify-center lg:justify-start items-center lg:ml-26 max-w-full"
-        >
-          <p className="text-2xl font-bold">Keywords:</p>
-          {data.keywords.results.map((data, i) => (
-            <p
-              key={i}
-              className="ml-4 mt-2 bg-slate-800 px-4 py-2 rounded-md font-semibold"
+    <div>
+      {!isLoading && seasonData && data.seasons && (
+        <div id="episodes">
+          <div className="flex flex-col justify-center lg:justify-start items-center lg:items-start w-full text-white text-center font-bold mt-12 -mb-4 lg:ml-26">
+            <h2 className="font-bold text-3xl">
+              {seasonData.name === `Season ${seasonData.season_number}`
+                ? `Season ${seasonData.season_number}`
+                : `Season ${seasonData.season_number} - ${seasonData.name}`}
+            </h2>
+            <select
+              onChange={handleChange}
+              id="select-season-number"
+              className="bg-slate-800 text-white w-32 rounded my-2 px-1 "
             >
-              <span className="text-gray-400">#</span>
-              {data.name}
+              {data.seasons.map((data, i) => (
+                <option key={i} value={data.season_number}>
+                  {data.name}
+                </option>
+              ))}
+            </select>
+            <p className="mt-2 text-xl font-normal">
+              {seasonData.episodes.length} Episodes
             </p>
-          ))}
+          </div>
+          {isLoading && (
+            <p className="text-white text-2xl mt-20 lg:ml-26">Loading...</p>
+          )}
+          {seasonData.episodes.length != 0 && (
+            <Slider type="episodeSlider">
+              {seasonData.episodes.map((episode, i) => (
+                <div
+                  key={i}
+                  className="w-56 sm:w-[500px] min-h-[400px] hover:max-h-full snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out sm:pb-4 text-ellipsis"
+                >
+                  <img
+                    className="object-cover rounded drop-shadow-sm w-[500px] h-[281px] hover:opacity-70 transition-all duration-500 ease-in-out"
+                    src={
+                      episode.still_path
+                        ? `https://image.tmdb.org/t/p/w500${episode.still_path}`
+                        : "/share.png"
+                    }
+                    alt=""
+                    loading="lazy"
+                    width="500px"
+                    height="281px"
+                  />
+                  <div className="text-white px-3 pt-2">
+                    <p className="text-xl font-bold w-50 truncate">
+                      {episode.name ? episode.name : episode.original_title}
+                    </p>
+                    <div className="flex items-center">
+                      <p className="text-md text-gray-300">
+                        {episode.air_date}
+                      </p>
+                      {episode.runtime && (
+                        <>
+                          <span
+                            id="divider"
+                            className="bg-gray-400 w-0.5 h-5 mx-2"
+                          ></span>
+                          <p className="text-md text-gray-300">
+                            {episode.runtime} Minutes
+                          </p>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="flex max-w-sm mt-2 sm:mt-4 mb-1">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13.0621 1.65925L15.5435 6.67764C15.716 7.02667 16.0496 7.26852 16.4356 7.3244L21.9843 8.12919C22.9562 8.27027 23.344 9.46212 22.641 10.146L18.626 14.0522C18.3469 14.3239 18.2194 14.7155 18.2854 15.0989L19.2331 20.6147C19.3992 21.5807 18.3832 22.3173 17.514 21.8615L12.5514 19.2575C12.2063 19.0766 11.7937 19.0766 11.4486 19.2575L6.48598 21.8615C5.6168 22.3177 4.60078 21.5807 4.7669 20.6147L5.71455 15.0989C5.78064 14.7155 5.65306 14.3239 5.37404 14.0522L1.35905 10.146C0.655998 9.46166 1.04378 8.26982 2.01575 8.12919L7.56441 7.3244C7.95036 7.26852 8.28398 7.02667 8.45653 6.67764L10.9379 1.65925C11.372 0.780251 12.6276 0.780251 13.0621 1.65925Z"
+                          fill="#ED8A19"
+                        />
+                      </svg>
+                      <div className="flex flex-wrap w-[11rem] items-center pl-2 max-h-48 whitespace-normal text-md">
+                        {Math.round(episode.vote_average * 100) / 100}{" "}
+                        <span
+                          id="divider"
+                          className="bg-gray-400 w-[2px] h-5 mx-2"
+                        ></span>{" "}
+                        {episode.vote_count === 1
+                          ? `${episode.vote_count} Review`
+                          : `${episode.vote_count} Reviews`}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="hidden sm:block truncate ">
+                        {episode.overview}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          )}
         </div>
-      )} */}
+      )}
       {data.credits.cast && data.credits.cast.length != 0 && (
         <div id="cast">
           {data.credits.cast.length > 5 ? (
@@ -199,7 +324,7 @@ const PageContent = ({ data }) => {
                               ? results.name
                               : results.original_title}
                           </p>
-                          <div className="flex  max-w-sm">
+                          <div className="flex max-w-sm">
                             <svg
                               width="24"
                               height="24"
@@ -228,7 +353,7 @@ const PageContent = ({ data }) => {
             )}
           </div>
         )}
-    </>
+    </div>
   );
 };
 

@@ -33,13 +33,8 @@ const Slug = ({ data, provider }) => {
         id="movie-page"
         className={`${openTrailer ? "w-full h-full blur-sm" : "visible"} `}
       >
-        <PageHero
-          data={data}
-          provider={provider}
-          showTrailer={showTrailer}
-          movie
-        />
-        <PageContent data={data} />
+        <PageHero data={data} provider={provider} showTrailer={showTrailer} />
+        <PageContent data={data} type="movie" />
       </div>
     </>
   );

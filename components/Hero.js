@@ -51,12 +51,12 @@ const HomeHero = ({ data }) => {
               {Math.round(data.vote_average * 100) / 100}
             </p>
           </div>
-          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
+          <span id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></span>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
             {data.vote_count}
             {data.vote_count === "1" ? " Review" : " Reviews"}
           </p>
-          <div id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></div>
+          <span id="divider" className="bg-gray-400 w-[2px] h-5 mx-2"></span>
           <p className="max-w-xl max-h-48 whitespace-normal truncate text-lg">
             {data.first_air_date
               ? data.first_air_date.split("-")[0]

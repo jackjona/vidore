@@ -8,6 +8,11 @@ body {
   background-color: #000000;
 }
 
+/* Disable default <select> styling */
+select {
+  -webkit-appearance: none;
+}
+
 /* Disable horizontal (slider) scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

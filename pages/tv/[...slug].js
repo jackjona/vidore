@@ -38,7 +38,7 @@ const Slug = ({ data, provider }) => {
           showTrailer={showTrailer}
           tv
         />
-        <PageContent data={data} />
+        <PageContent data={data} type="tv" />
       </div>
     </>
   );
@@ -66,7 +66,6 @@ export async function getServerSideProps({ params }) {
   );
 
   const TVData = await getTVData.json();
-
   const providerData = await getProviderData.json();
 
   return {

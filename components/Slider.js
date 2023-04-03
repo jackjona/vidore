@@ -22,7 +22,7 @@ const Slider = ({ children, type, location }) => {
   }, [location]);
 
   return (
-    <div className="relative flex items-center bg-black mt-8 px-6">
+    <div className="relative flex items-center bg-black mt-8 px-4 sm:px-6">
       <button
         className="bg-white/10 hover:bg-white/20 rounded-l-2xl hover:rounded-l-[1.8rem] hover:scale-[1.01] transition-all duration-300 ease-in-out md:px-2"
         aria-label="slide left"
