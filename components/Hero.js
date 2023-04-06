@@ -11,7 +11,6 @@ const HomeHero = ({ data }) => {
         className="absolute left-0 top-0 object-cover w-full h-full max-h-[36rem] md:max-h-[55rem] opacity-50 blur-sm z-0"
         src={`https://image.tmdb.org/t/p/w1280/${data.backdrop_path}`}
         alt=""
-        aria-label="Go back home"
       />
       <Link
         href={`/${data.media_type}/${data.id}`}
@@ -29,9 +28,9 @@ const HomeHero = ({ data }) => {
         />
       </Link>
       <div className="relative md:ml-20 my-20 mx-2 md:pl-2 text-center md:text-left">
-        <p className="md:flex md:flex-wrap max-w-xl text-4xl md:text-5xl xl:text-6xl font-extrabold">
+        <h1 className="md:flex md:flex-wrap max-w-xl text-4xl md:text-5xl xl:text-6xl font-extrabold">
           {data.name ? data.name : data.original_title}
-        </p>
+        </h1>
         <div className="flex justify-center md:justify-start items-center my-6">
           <div className="flex justify-center items-center font-normal ">
             {/*    <img src="./tmbd.svg" width="32" height="32" alt=""/> */}

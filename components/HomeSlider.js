@@ -22,7 +22,11 @@ const SliderContent = ({ type, name, location, data, label, path }) => {
               )}
               <img
                 className="rounded drop-shadow-sm w-[210px] h-[290px] md:w-[320px] md:h-[480px] hover:opacity-70 transition-all duration-500 ease-in-out"
-                src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
+                src={
+                  results.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${results.poster_path}`
+                    : "/placeholder.png"
+                }
                 alt=""
                 loading="lazy"
                 width="320px"

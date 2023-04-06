@@ -17,7 +17,7 @@ const Slug = ({ data }) => {
           /*  loading="lazy" */
         />
         <Link
-          href={`https://image.tmdb.org/t/p/original${data.profile_path}}`}
+          href={`https://image.tmdb.org/t/p/original${data.profile_path}`}
           target="_blank"
         >
           <img
@@ -97,7 +97,7 @@ const Slug = ({ data }) => {
           >
             {data.images.profiles.length > 5 ? (
               <>
-                <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-28">
+                <div className="flex justify-center lg:justify-start maw-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-28">
                   <h2>Profile Images:</h2>
                 </div>
                 <Slider type="profileSlider">
@@ -126,7 +126,7 @@ const Slug = ({ data }) => {
               </>
             ) : (
               <>
-                <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+                <div className="flex justify-center lg:justify-start maw-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
                   <h2>Profile Images:</h2>
                 </div>
                 <div className="flex flex-wrap justify-center lg:justify-start lg:mx-20">
@@ -160,7 +160,7 @@ const Slug = ({ data }) => {
           <div id="credits" className="mb-10">
             {data.combined_credits.cast.length > 5 ? (
               <>
-                <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26 ">
+                <div className="flex justify-center lg:justify-start maw-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26 ">
                   <h2>Known For:</h2>
                 </div>
                 <Slider type="castSlider">
@@ -203,7 +203,7 @@ const Slug = ({ data }) => {
               </>
             ) : (
               <>
-                <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+                <div className="flex justify-center lg:justify-start maw-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
                   <h2>Known For:</h2>
                 </div>
                 <div className="flex flex-wrap justify-center lg:justify-start">

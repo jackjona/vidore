@@ -6,11 +6,11 @@ const TrailerOverlay = ({ data, loaded, loadCompleted, showTrailer }) => {
     <>
       {!loaded && (
         <div className="h-screen w-full ">
-          <Loader />
+          <Loader full />
         </div>
       )}
       <div className="fixed top-0 bottom-0 left-0 right-0 bg-black/50 z-10 h-[60%] px-6">
-        <div className="mb-10 mt-20 md:mt-40 lg:ml-26">
+        <div className="mb-10 mt-20 lg:ml-26">
           <button
             onClick={showTrailer}
             className="text-white text-xl font-bold px-6 py-4 rounded-md bg-primary hover:bg-sky-500 hover:rounded-xl transition-all duration-300 ease-in-out"

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Slider from "./Slider";
+import Loader from "./Loader";
 
 const PageContent = ({ data, type }) => {
   const [seasonData, setSeasonData] = useState(null);
@@ -8,28 +9,28 @@ const PageContent = ({ data, type }) => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const fetchData = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/tv/${data.id}/season/${seasonNumber}?api_key=cf462bd4335ec8255cff20c070b1702a`,
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
-    if (res.ok) {
-      const data = await res.json();
-      setSeasonData(data);
-      setLoading(false);
-    } else {
-      setLoading(false);
-      setError(true);
-    }
-  };
-
   useEffect(() => {
-    setLoading(true);
+    const fetchData = async () => {
+      setLoading(true);
+      const res = await fetch(
+        `https://api.themoviedb.org/3/tv/${data.id}/season/${seasonNumber}?api_key=cf462bd4335ec8255cff20c070b1702a`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setSeasonData(data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
+
     try {
       {
         data && type === "tv" && fetchData();
@@ -44,10 +45,10 @@ const PageContent = ({ data, type }) => {
   };
 
   return (
-    <div>
+    <>
       {!isLoading && seasonData && data.seasons && (
         <div id="episodes">
-          <div className="flex flex-col justify-center lg:justify-start items-center lg:items-start w-full text-white text-center font-bold mt-12 -mb-4 lg:ml-26">
+          <div className="flex flex-col justify-center lg:justify-start items-center lg:items-start max-w-full text-white text-center font-bold mt-12 -mb-4 lg:ml-26">
             <h2 className="font-bold text-3xl">
               {seasonData.name === `Season ${seasonData.season_number}`
                 ? `Season ${seasonData.season_number}`
@@ -68,9 +69,7 @@ const PageContent = ({ data, type }) => {
               {seasonData.episodes.length} Episodes
             </p>
           </div>
-          {isLoading && (
-            <p className="text-white text-2xl mt-20 lg:ml-26">Loading...</p>
-          )}
+          {isLoading && <Loader />}
           {seasonData.episodes.length != 0 && (
             <Slider type="episodeSlider">
               {seasonData.episodes.map((episode, i) => (
@@ -110,31 +109,33 @@ const PageContent = ({ data, type }) => {
                         </>
                       )}
                     </div>
+                    {episode.vote_count != 0 && (
+                      <div className="flex max-w-sm mt-2 sm:mt-4 mb-1">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M13.0621 1.65925L15.5435 6.67764C15.716 7.02667 16.0496 7.26852 16.4356 7.3244L21.9843 8.12919C22.9562 8.27027 23.344 9.46212 22.641 10.146L18.626 14.0522C18.3469 14.3239 18.2194 14.7155 18.2854 15.0989L19.2331 20.6147C19.3992 21.5807 18.3832 22.3173 17.514 21.8615L12.5514 19.2575C12.2063 19.0766 11.7937 19.0766 11.4486 19.2575L6.48598 21.8615C5.6168 22.3177 4.60078 21.5807 4.7669 20.6147L5.71455 15.0989C5.78064 14.7155 5.65306 14.3239 5.37404 14.0522L1.35905 10.146C0.655998 9.46166 1.04378 8.26982 2.01575 8.12919L7.56441 7.3244C7.95036 7.26852 8.28398 7.02667 8.45653 6.67764L10.9379 1.65925C11.372 0.780251 12.6276 0.780251 13.0621 1.65925Z"
+                            fill="#ED8A19"
+                          />
+                        </svg>
 
-                    <div className="flex max-w-sm mt-2 sm:mt-4 mb-1">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M13.0621 1.65925L15.5435 6.67764C15.716 7.02667 16.0496 7.26852 16.4356 7.3244L21.9843 8.12919C22.9562 8.27027 23.344 9.46212 22.641 10.146L18.626 14.0522C18.3469 14.3239 18.2194 14.7155 18.2854 15.0989L19.2331 20.6147C19.3992 21.5807 18.3832 22.3173 17.514 21.8615L12.5514 19.2575C12.2063 19.0766 11.7937 19.0766 11.4486 19.2575L6.48598 21.8615C5.6168 22.3177 4.60078 21.5807 4.7669 20.6147L5.71455 15.0989C5.78064 14.7155 5.65306 14.3239 5.37404 14.0522L1.35905 10.146C0.655998 9.46166 1.04378 8.26982 2.01575 8.12919L7.56441 7.3244C7.95036 7.26852 8.28398 7.02667 8.45653 6.67764L10.9379 1.65925C11.372 0.780251 12.6276 0.780251 13.0621 1.65925Z"
-                          fill="#ED8A19"
-                        />
-                      </svg>
-                      <div className="flex flex-wrap w-[11rem] items-center pl-2 max-h-48 whitespace-normal text-md">
-                        {Math.round(episode.vote_average * 100) / 100}{" "}
-                        <span
-                          id="divider"
-                          className="bg-gray-400 w-[2px] h-5 mx-2"
-                        ></span>{" "}
-                        {episode.vote_count === 1
-                          ? `${episode.vote_count} Review`
-                          : `${episode.vote_count} Reviews`}
+                        <div className="flex flex-wrap w-[11rem] items-center pl-2 max-h-48 whitespace-normal text-md">
+                          {Math.round(episode.vote_average * 100) / 100}{" "}
+                          <span
+                            id="divider"
+                            className="bg-gray-400 w-[2px] h-5 mx-2"
+                          ></span>{" "}
+                          {episode.vote_count === 1
+                            ? `${episode.vote_count} Review`
+                            : `${episode.vote_count} Reviews`}
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div>
                       <p className="hidden sm:block truncate ">
                         {episode.overview}
@@ -151,7 +152,7 @@ const PageContent = ({ data, type }) => {
         <div id="cast">
           {data.credits.cast.length > 5 ? (
             <>
-              <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+              <div className="flex justify-center lg:justify-start max-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
                 <h2>Cast:</h2>
               </div>
               <Slider type="castSlider">
@@ -186,7 +187,7 @@ const PageContent = ({ data, type }) => {
             </>
           ) : (
             <>
-              <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+              <div className="flex justify-center lg:justify-start max-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
                 <h2>Cast:</h2>
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start">
@@ -223,12 +224,13 @@ const PageContent = ({ data, type }) => {
           )}
         </div>
       )}
+
       {data.recommendations.results &&
         data.recommendations.results.length != 0 && (
           <div id="recommendations">
             {data.recommendations.results.length > 5 ? (
               <>
-                <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+                <div className="flex justify-center lg:justify-start max-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
                   <h2>You Might Also Like</h2>
                 </div>
                 <Slider type="recommendedSlider">
@@ -290,7 +292,7 @@ const PageContent = ({ data, type }) => {
               </>
             ) : (
               <>
-                <div className="flex justify-center lg:justify-start w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+                <div className="flex justify-center lg:justify-start max-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
                   <h2>You Might Also Like:</h2>
                 </div>
                 <div className="flex flex-wrap justify-center lg:justify-start">
@@ -353,7 +355,7 @@ const PageContent = ({ data, type }) => {
             )}
           </div>
         )}
-    </div>
+    </>
   );
 };
 

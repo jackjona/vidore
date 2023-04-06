@@ -1,8 +1,114 @@
 import HomeSlider from "@/components/HomeSlider";
 import Hero from "@/components/Hero";
 import Meta from "@/components/Meta";
+import { useEffect, useState } from "react";
+import Loader from "@/components/Loader";
 
-export default function Home({ trending, mostWatched, highestRated }) {
+export default function Home({ trending, mostWatchedMovies }) {
+  const [airingTV, setAiringTV] = useState(null);
+  const [highestRatedMovies, setHighestRatedMovies] = useState(null);
+  const [highestRatedTV, setHighestRatedTV] = useState(null);
+  const [upcomingMovies, setUpcomingMovies] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const getHighestRatedMovies = async () => {
+      setLoading(true);
+      const res = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMBD_API_KEY}&sort_by=vote_count.desc&include_adult=false`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setHighestRatedMovies(data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
+
+    const getHighestRatedTV = async () => {
+      setLoading(true);
+      const res = await fetch(
+        `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.NEXT_PUBLIC_TMBD_API_KEY}&sort_by=vote_count.desc&include_adult=false`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setHighestRatedTV(data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
+
+    const getAiringTV = async () => {
+      setLoading(true);
+      const res = await fetch(
+        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.NEXT_PUBLIC_TMBD_API_KEY}&language=en-US&page=1`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setAiringTV(data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
+
+    const getUpcomingMovies = async () => {
+      setLoading(true);
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMBD_API_KEY}&include_adult=false`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setUpcomingMovies(data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
+
+    try {
+      {
+        getHighestRatedMovies();
+        getHighestRatedTV();
+        getAiringTV();
+        getUpcomingMovies();
+      }
+    } catch (error) {
+      setError(true);
+    }
+  }, []);
+
   return (
     <>
       <Meta />
@@ -16,19 +122,49 @@ export default function Home({ trending, mostWatched, highestRated }) {
           label
         />
         <HomeSlider
-          type="mostWatched"
-          name="Most Watched"
+          type="mostWatchedMovies"
+          name="Most Watched Movies"
           location="home"
-          data={mostWatched.results}
+          data={mostWatchedMovies.results}
           path="movie"
         />
-        <HomeSlider
-          type="highestRated"
-          name="Highest Rated"
-          location="home"
-          data={highestRated.results}
-          path="movie"
-        />
+        {isLoading && <Loader />}
+        {highestRatedTV && !error && (
+          <HomeSlider
+            type="highestRatedTV"
+            name="Highest Rated TV Shows"
+            location="home"
+            data={highestRatedTV.results}
+            path="tv"
+          />
+        )}
+        {highestRatedMovies && !error && (
+          <HomeSlider
+            type="highestRatedMovies"
+            name="Highest Rated Movies"
+            location="home"
+            data={highestRatedMovies.results}
+            path="movie"
+          />
+        )}
+        {airingTV && !error && (
+          <HomeSlider
+            type="airingTV"
+            name="TV Shows Airing Now"
+            location="home"
+            data={airingTV.results}
+            path="tv"
+          />
+        )}
+        {upcomingMovies && !error && (
+          <HomeSlider
+            type="upcomingMovies"
+            name="Upcoming Movies"
+            location="home"
+            data={upcomingMovies.results}
+            path="movie"
+          />
+        )}
       </main>
     </>
   );
@@ -44,17 +180,8 @@ export async function getServerSideProps() {
       },
     }
   );
-  const getMostWatched = await fetch(
+  const getMostWatchedMovies = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMBD_API_KEY}&sort_by=popularity.desc&include_adult=false`,
-    {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    }
-  );
-  const getHighestRated = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMBD_API_KEY}&sort_by=vote_count.desc&include_adult=false`,
     {
       method: "GET",
       headers: {
@@ -64,14 +191,12 @@ export async function getServerSideProps() {
   );
 
   const trendingData = await getTrending.json();
-  const mostWatchedData = await getMostWatched.json();
-  const highestRatedData = await getHighestRated.json();
+  const mostWatchedMoviesData = await getMostWatchedMovies.json();
 
   return {
     props: {
       trending: trendingData,
-      mostWatched: mostWatchedData,
-      highestRated: highestRatedData,
+      mostWatchedMovies: mostWatchedMoviesData,
     },
   };
 }

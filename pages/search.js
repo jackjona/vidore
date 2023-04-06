@@ -64,7 +64,7 @@ function Search() {
                 type="text"
                 name="search"
                 aria-label="Search"
-                placeholder="The Hobbit OR https://www.goodreads.com/book/show/5907"
+                placeholder=" John Wick"
                 className="rounded-md w-7/12 ease-in-out px-2 py-3 text-gray-200/90 text-sm bg-slate-700 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-slate-700"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -72,7 +72,7 @@ function Search() {
               />
             </div>
             <button className="mt-10 my-6 ont-semibold text-md  bg-primary ring ring-primary ring-offset-2 ring-offset-white-100 py-4 px-10 rounded-xl shadow-lg shadow-primary hover:shadow-xl hover:bg-sky-500 transition duration-300 delay-40 hover:delay-40">
-              Submit
+              Search
             </button>
             {validQuery === false && (
               <div id="formError">

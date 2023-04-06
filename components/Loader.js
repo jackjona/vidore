@@ -1,8 +1,12 @@
 import React from "react";
 
-const Loader = () => {
+const Loader = ({ full }) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-5 bg-black min-w-screen">
+    <div
+      className={`flex flex-col items-center justify-center p-5 bg-black ${
+        full ? "min-h-screen min-w-screen" : "mt-20"
+      }`}
+    >
       <div className="flex space-x-2 animate-pulse">
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>

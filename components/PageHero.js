@@ -204,21 +204,6 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
                   ))}
               </div>
             </Link>
-            {/* <div className="flex flex-col justify-center items-center lg:items-start mt-6 lg:mt-4 text-gray-300 text-sm italic">
-              <img src="/justwatch.svg" width="120" height="120" alt=""/>
-              <p>
-                Streaming service data from JustWatch. Visit{" "}
-                <Link
-                  href={`https://www.justwatch.com`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline hover:text-yellow-400"
-                >
-                  JustWatch
-                </Link>{" "}
-                for more information.
-              </p>
-            </div> */}
           </div>
         )}
         {data.videos.results.length != 0 && (
