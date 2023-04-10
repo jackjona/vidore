@@ -34,6 +34,8 @@ const Slider = ({ children, type, location }) => {
               src="/left-chevron.svg"
               className="text-white"
               alt="left slide indicator"
+              width="40px"
+              height="40px"
             />
           </div>
         </div>
@@ -55,6 +57,8 @@ const Slider = ({ children, type, location }) => {
               src="/right-chevron.svg"
               className="text-white"
               alt="right slide indicator"
+              width="40px"
+              height="40px"
             />
           </div>
         </div>

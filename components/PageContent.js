@@ -75,7 +75,7 @@ const PageContent = ({ data, type }) => {
               {seasonData.episodes.map((episode, i) => (
                 <div
                   key={i}
-                  className="w-56 sm:w-[500px] min-h-[400px] hover:max-h-full snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out sm:pb-4 text-ellipsis"
+                  className="w-56 sm:w-[500px] min-h-[400px] hover:max-h-full snap-center shrink-0 first:-ml-12 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out sm:pb-4 text-ellipsis"
                 >
                   <img
                     className="object-cover rounded drop-shadow-sm w-[500px] h-[281px] hover:opacity-70 transition-all duration-500 ease-in-out"
@@ -159,7 +159,7 @@ const PageContent = ({ data, type }) => {
                 {data.credits.cast.map((cast, i) => (
                   <div
                     key={i}
-                    className="snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4"
+                    className="snap-center shrink-0 first:-ml-12 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4"
                   >
                     <Link href={`/person/${cast.id}`}>
                       <img
@@ -194,7 +194,7 @@ const PageContent = ({ data, type }) => {
                 {data.credits.cast.map((cast, i) => (
                   <div
                     key={i}
-                    className="bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16 lg:first:ml-24"
+                    className="bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16 lg:first:ml-24"
                   >
                     <Link href={`/person/${cast.id}`}>
                       <img
@@ -237,7 +237,7 @@ const PageContent = ({ data, type }) => {
                   {data.recommendations.results.map((results, i) => (
                     <div
                       key={i}
-                      className="snap-center shrink-0 first:-ml-12 h-[26rem] w-[11.5rem] bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 text-ellipsis"
+                      className="snap-center shrink-0 first:-ml-12 h-[26rem] w-[11.5rem] bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 text-ellipsis"
                     >
                       <Link
                         href={
@@ -299,7 +299,7 @@ const PageContent = ({ data, type }) => {
                   {data.recommendations.results.map((results, i) => (
                     <div
                       key={i}
-                      className="h-[26rem] w-[11.5rem] bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16 lg:first:ml-24 text-ellipsis"
+                      className="h-[26rem] w-[11.5rem] bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16 lg:first:ml-24 text-ellipsis"
                     >
                       <Link
                         href={

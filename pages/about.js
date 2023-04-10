@@ -1,16 +1,14 @@
 import Meta from "@/components/Meta";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import bgPic from "../public/about-bg.jpg";
+
 const About = () => {
   return (
     <>
       <div className="bg-black min-h-[80vh] m-0 p-0">
         <Meta />
-        <Image
-          src={bgPic}
-          placeholder="blur"
+        <img
+          src="/about-bg.jpg"
           className="absolute z-0 w-full min-h-[88vh] object-cover opacity-30"
           alt=""
         />

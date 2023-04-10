@@ -104,7 +104,7 @@ const Slug = ({ data }) => {
                   {data.images.profiles.map((data, i) => (
                     <div
                       key={i}
-                      className="snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-4"
+                      className="snap-center shrink-0 first:-ml-12 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-4"
                     >
                       <Link
                         href={`https://image.tmdb.org/t/p/original${data.file_path}`}
@@ -133,7 +133,7 @@ const Slug = ({ data }) => {
                   {data.images.profiles.map((data, i) => (
                     <div
                       key={i}
-                      className="bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-2 sm:mx-2 mt-16"
+                      className="bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-2 sm:mx-2 mt-16"
                     >
                       <Link
                         href={`https://image.tmdb.org/t/p/original${data.file_path}`}
@@ -167,7 +167,7 @@ const Slug = ({ data }) => {
                   {data.combined_credits.cast.map((cast, i) => (
                     <div
                       key={i}
-                      className="snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out h-[26rem] min-h-[29rem] hover:h-full pb-4"
+                      className="snap-center shrink-0 first:-ml-12 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out h-[26rem] min-h-[29rem] hover:h-full pb-4"
                     >
                       <Link href={`/${cast.media_type}/${cast.id}`}>
                         <img
@@ -210,7 +210,7 @@ const Slug = ({ data }) => {
                   {data.combined_credits.cast.map((cast, i) => (
                     <div
                       key={i}
-                      className="bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16 lg:first:ml-24"
+                      className="bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16 lg:first:ml-24"
                     >
                       <Link href={`/${cast.media_type}/${cast.id}`}>
                         <img

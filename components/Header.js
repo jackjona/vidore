@@ -23,7 +23,7 @@ const Header = () => {
                   href="/"
                   className="block group py-2 pr-4 pl-3 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent transition-all duration-100 ease-in-out"
                 >
-                  <span class="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
+                  <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
                     Home
                   </span>
                 </Link>
@@ -33,7 +33,7 @@ const Header = () => {
                   href="/about"
                   className="block group py-2 pr-4 pl-3 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent transition-all duration-100 ease-in-out"
                 >
-                  <span class="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
+                  <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
                     About
                   </span>
                 </Link>
@@ -43,7 +43,7 @@ const Header = () => {
                   href="/search"
                   className="block group py-2 pr-4 pl-3 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent transition-all duration-100 ease-in-out"
                 >
-                  <span class="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
+                  <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
                     Search
                   </span>
                 </Link>
@@ -52,7 +52,7 @@ const Header = () => {
                 <Link
                   href="/contact"
                   className="block group py-2 pr-4 pl-3 lg:hover:text-primary-700 lg:p-0 hover:bg-gray-700 hover:text-primary lg:hover:bg-transparent transition-all duration-100 ease-in-out"
-                ><span class="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
+                ><span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-300 ease-out">
                   Contact
                 
                 </span>  </Link>

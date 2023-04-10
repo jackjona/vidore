@@ -10,11 +10,11 @@ const SliderContent = ({ type, name, location, data, label, path }) => {
         {data.map((results, i) => (
           <div
             key={i}
-            className="snap-center shrink-0 first:-ml-12 bg-[#1a1a1a] rounded-lg pb-2 hover:scale-[1.01] transition-all duration-300 ease-in-out"
+            className="snap-center shrink-0 first:-ml-12 bg-secondary rounded-lg pb-2 hover:scale-[1.01] transition-all duration-300 ease-in-out"
           >
             <Link href={`/${path ? path : results.media_type}/${results.id}`}>
               {label && (
-                <div className="flex items-end justify-end font-mono text-sm font-bold -mb-24">
+                <div className="sm:flex items-end justify-end font-mono text-sm font-bold -mb-24">
                   <div className="w-14 z-10 h-24 flex items-center justify-center bg-yellow-500 text-2xl rounded-bl-md shadow-lg ring-2 ring-slate-900">
                     {i + 1}
                   </div>

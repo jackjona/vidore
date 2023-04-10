@@ -89,7 +89,7 @@ function Search() {
             data.results.map((result, i) => (
               <div
                 key={i}
-                className="bg-[#1a1a1a] rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16"
+                className="bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-16"
               >
                 <Link href={`/${result.media_type}/${result.id}`}>
                   <img

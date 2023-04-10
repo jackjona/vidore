@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <nav className="relative z-10 mt-24 bg-[#1a1a1a] px-4 lg:px-6 py-6">
+      <nav className="relative z-10 mt-24 bg-secondary px-4 lg:px-6 py-6">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link href="/" className="flex items-center">
             <img

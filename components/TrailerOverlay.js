@@ -19,7 +19,7 @@ const TrailerOverlay = ({ data, loaded, loadCompleted, showTrailer }) => {
           </button>
         </div>
         {data.videos.results.filter((data) => data.name === "Official Trailer")
-          .length != 0
+          .length > 1
           ? data.videos.results
               .filter((data) => data.name === "Official Trailer")
               .map((data, i) => (
@@ -35,7 +35,8 @@ const TrailerOverlay = ({ data, loaded, loadCompleted, showTrailer }) => {
                   />
                 </div>
               ))
-          : data.videos.results
+          : data.videos.results.length > 1 &&
+            data.videos.results
               .filter((data) => data.type === "Trailer")
               .slice(0, 1)
               .map((data, i) => (
@@ -51,6 +52,19 @@ const TrailerOverlay = ({ data, loaded, loadCompleted, showTrailer }) => {
                   />
                 </div>
               ))}
+        {data.videos.results.length === 1 && (
+          <div className={`h-full w-full ${!loaded && "hidden"}`}>
+            <iframe
+              title={data.name ? data.name : data.original_title}
+              src={`https://www.youtube-nocookie.com/embed/${data.videos.results[0].key}`}
+              allow="fullscreen; picture-in-picture"
+              height="100%"
+              width="100%"
+              referrerPolicy="no-referrer"
+              onLoad={loadCompleted}
+            />
+          </div>
+        )}
       </div>
     </>
   );

@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#1681cc",
+        secondary: "#1a1a1a",
       },
       margin: {
         26: "6.5rem",
