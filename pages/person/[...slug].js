@@ -93,7 +93,7 @@ const Slug = ({ data }) => {
         {data.images.profiles.length != 0 && (
           <div
             id="profile-images"
-            className="flex flex-wrap justify-center lg:justify-start items-center"
+            className="flex flex-col flex-wrap justify-center lg:justify-start items-center"
           >
             {data.images.profiles.length > 5 ? (
               <>

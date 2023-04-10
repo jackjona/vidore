@@ -17,7 +17,11 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
       />
       <img
         className="rounded-lg drop-shadow-2xl w-[270px] h-[400px] md:w-[340px] md:h-[480px] mt-4 lg:-mt-20 hover:scale-105 transition-all duration-500 ease-in-out"
-        src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+        src={
+          data.poster_path
+            ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
+            : "/placeholder.png"
+        }
         alt=""
         loading="lazy"
         width="320px"
@@ -109,15 +113,19 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               {data.first_air_date} - {data.last_air_date}
             </p>
           )}
-          <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-            <span className="font-semibold">Status:</span> {data.status}
-          </p>
-          <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-            <span className="font-semibold">Genre:</span>{" "}
-            {data.genres.map((data, i) => (
-              <span key={i}>{(i ? ", " : "") + data.name}</span>
-            ))}
-          </p>
+          {data.status && (
+            <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
+              <span className="font-semibold">Status:</span> {data.status}
+            </p>
+          )}
+          {data.genres.length != 0 && (
+            <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
+              <span className="font-semibold">Genre:</span>{" "}
+              {data.genres.map((data, i) => (
+                <span key={i}>{(i ? ", " : "") + data.name}</span>
+              ))}
+            </p>
+          )}
           {movie && (
             <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
               <span className="font-semibold">Run Time:</span> {data.runtime}{" "}
@@ -140,12 +148,14 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
               </p>
             </>
           )}
-          <p className="max-w-sm max-h-48 text-md text-gray-200 font-normal my-1">
-            <span className="font-semibold">Production:</span>{" "}
-            {data.production_companies.map((data, i) => (
-              <span key={i}>{(i ? ", " : "") + data.name}</span>
-            ))}
-          </p>
+          {data.production_companies.length != 0 && (
+            <p className="max-w-sm max-h-48 text-md text-gray-200 font-normal my-1">
+              <span className="font-semibold">Production:</span>{" "}
+              {data.production_companies.map((data, i) => (
+                <span key={i}>{(i ? ", " : "") + data.name}</span>
+              ))}
+            </p>
+          )}
           <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
             <span className="font-semibold">TMBD ID:</span> {data.id}
           </p>
