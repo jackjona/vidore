@@ -42,7 +42,7 @@ const Slider = ({ children, type, location }) => {
       </button>
       <div
         id={type}
-        className="flex z-0 gap-6 snap-x overflow-y-hidden overflow-x-scroll scroll scroll-smooth no-scrollbar pl-14 pr-2"
+        className="flex z-0 gap-6 overflow-y-hidden overflow-x-scroll scroll scroll-smooth no-scrollbar pl-14 pr-2"
       >
         {children}
       </div>

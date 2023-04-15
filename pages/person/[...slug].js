@@ -90,7 +90,7 @@ const Slug = ({ data }) => {
         </div>
       </div>
       <div className="min-h-[35vh]">
-        {data.images.profiles.length != 0 && (
+        {/*  {data.images.profiles.length != 0 && (
           <div
             id="profile-images"
             className="flex flex-col flex-wrap justify-center lg:justify-start items-center"
@@ -121,7 +121,7 @@ const Slug = ({ data }) => {
                       </Link>
                     </div>
                   ))}
-                  å
+                  
                 </Slider>
               </>
             ) : (
@@ -130,6 +130,68 @@ const Slug = ({ data }) => {
                   <h2>Profile Images:</h2>
                 </div>
                 <div className="flex flex-wrap justify-center lg:justify-start lg:mx-20">
+                  {data.images.profiles.map((data, i) => (
+                    <div
+                      key={i}
+                      className="bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-2 sm:mx-2 mt-16"
+                    >
+                      <Link
+                        href={`https://image.tmdb.org/t/p/original${data.file_path}`}
+                        target="_blank"
+                      >
+                        <img
+                          className="rounded drop-shadow-sm w-[240px] h-[350px] hover:opacity-70 transition-all duration-500 ease-in-out"
+                          src={`https://image.tmdb.org/t/p/w500${data.file_path}`}
+                          alt=""
+                          loading="lazy"
+                          width="240px"
+                          height="350px"
+                        />
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        )} */}
+
+        {data.images.profiles.length != 0 && (
+          <div id="profile-images" className="mb-10">
+            {data.images.profiles.length > 5 ? (
+              <>
+                <div className="flex justify-center lg:justify-start maw-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26 ">
+                  <h2>Profile Images:</h2>
+                </div>
+                <Slider type="profileSlider">
+                  {data.images.profiles.map((data, i) => (
+                    <div
+                      key={i}
+                      className="snap-center shrink-0 first:-ml-12 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-4"
+                    >
+                      <Link
+                        href={`https://image.tmdb.org/t/p/original${data.file_path}`}
+                        target="_blank"
+                      >
+                        <img
+                          className="rounded drop-shadow-sm w-[240px] h-[350px] hover:opacity-70 transition-all duration-500 ease-in-out"
+                          src={`https://image.tmdb.org/t/p/w500${data.file_path}`}
+                          alt=""
+                          loading="lazy"
+                          width="240px"
+                          height="350px"
+                        />
+                      </Link>
+                    </div>
+                  ))}
+                </Slider>
+              </>
+            ) : (
+              <>
+                <div className="flex justify-center lg:justify-start maw-w-full text-white text-3xl font-bold mt-12 -mb-4 lg:ml-26">
+                  <h2>Profile Images:</h2>
+                </div>
+                <div className="flex flex-wrap justify-center lg:justify-start">
                   {data.images.profiles.map((data, i) => (
                     <div
                       key={i}

@@ -14,8 +14,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1681cc",
-        secondary: "#1a1a1a",
+        primary: "#1681CC",
+        secondary: "#1A1A1A",
       },
       margin: {
         26: "6.5rem",

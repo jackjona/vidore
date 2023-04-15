@@ -5,8 +5,12 @@ const Header = () => {
   return (
     <header>
       <nav className="px-4 lg:px-6 py-6 bg-black">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link href="/" className="flex items-center">
+        <div className="flex flex-wrap justify-center sm:justify-between items-center mx-auto max-w-screen-xl">
+          <Link
+            href="/"
+            className="flex items-center"
+            aria-label="Click to go back to the homepage"
+          >
             <img
               src="/logo.png"
               width="128px"
@@ -16,7 +20,7 @@ const Header = () => {
               aria-label="Go back home"
             />
           </Link>
-          <div className="flex justify-between items-center order-1">
+          <div className="flex justify-center sm:justify-between items-center order-1">
             <ul className="flex flex-row lg:space-x-8 mt-0 sm:text-xl text-white font-bold">
               <li>
                 <Link

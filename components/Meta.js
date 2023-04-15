@@ -13,7 +13,7 @@ const Meta = (props) => {
       : "Vidore - A free modern video discovery and streaming website that includes everything you'll ever need."
   }`;
 
-  const version = "041023";
+  const version = "041423";
   console.log(`%c Version: ${version}`, `color:green`);
 
   return (
@@ -40,8 +40,9 @@ const Meta = (props) => {
         href="/favicon-16x16.png"
       />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#121212" />
+      <link rel="manifest" href="/manifest.webmanifest" />
       <meta name="msapplication-TileColor" content="#121212" />
-      <meta name="theme-color" content="#881337" />
+      <meta name="theme-color" content="#1681CC" />
       <meta property="og:title" content="Vidore" />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content="Vidore" />
