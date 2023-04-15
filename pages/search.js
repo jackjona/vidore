@@ -110,7 +110,7 @@ function Search() {
                   />
 
                   <div className=" px-3 pt-2 w-32">
-                    <p className="text-xl font-bold">
+                    <p className="text-xl font-bold break-words">
                       {result.name ? result.name : result.original_name}
                       {result.title ? result.title : result.original_title}
                     </p>
