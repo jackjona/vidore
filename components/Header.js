@@ -9,7 +9,7 @@ const Header = () => {
           <Link
             href="/"
             className="flex items-center"
-            aria-label="Click to go back to the homepage"
+            aria-label="Click to go back home"
           >
             <img
               src="/logo.png"
@@ -17,7 +17,6 @@ const Header = () => {
               height="26px"
               className="ml-3"
               alt=""
-              aria-label="Go back home"
             />
           </Link>
           <div className="flex justify-center sm:justify-between items-center order-1">

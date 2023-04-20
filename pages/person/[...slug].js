@@ -37,7 +37,7 @@ const Slug = ({ data }) => {
           <p className="max-w-xl text-6xl font-extrabold">
             {data.name ? data.name : data.original_title}
           </p>
-          {data.also_known_as && (
+          {data.also_known_as.length != 0 && (
             <div className="flex justify-center lg:justify-start items-center my-6">
               <p className="max-w-xl max-h-48 text-md font-normal my-1">
                 <span className="font-semibold">Also Known As:</span>{" "}
@@ -54,23 +54,29 @@ const Slug = ({ data }) => {
           </p>
 
           <div className="flex flex-col justify-center items-center lg:items-start mt-4">
-            <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-              <span className="font-semibold">Birthday:</span> {data.birthday}
-            </p>
-            <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-              <span className="font-semibold">Place Of Birth:</span>{" "}
-              {data.place_of_birth}
-            </p>
+            {data.birthday && (
+              <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
+                <span className="font-semibold">Birthday:</span> {data.birthday}
+              </p>
+            )}
+            {data.place_of_birth && (
+              <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
+                <span className="font-semibold">Place Of Birth:</span>{" "}
+                {data.place_of_birth}
+              </p>
+            )}
             {data.deathday && (
               <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
                 <span className="font-semibold">Death Day:</span>{" "}
                 {data.deathday}
               </p>
             )}
-            <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-              <span className="font-semibold">Known For:</span>{" "}
-              {data.known_for_department}
-            </p>
+            {data.known_for_department && (
+              <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
+                <span className="font-semibold">Known For:</span>{" "}
+                {data.known_for_department}
+              </p>
+            )}
             {data.homepage && (
               <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
                 <span className="font-semibold">Homepage:</span>{" "}
@@ -129,7 +135,7 @@ const Slug = ({ data }) => {
                   {data.images.profiles.map((data, i) => (
                     <div
                       key={i}
-                      className="lg:first:ml-24 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-2 sm:mx-2 mt-16"
+                      className="lg:ml-24 bg-secondary rounded-md hover:scale-[1.01] transition-all duration-300 ease-in-out p-2 sm:mx-2 mt-16"
                     >
                       <Link
                         href={`https://image.tmdb.org/t/p/original${data.file_path}`}
@@ -151,7 +157,6 @@ const Slug = ({ data }) => {
             )}
           </div>
         )}
-        {console.log(data.combined_credits.cast)}
         {data.combined_credits.cast.length != 0 && (
           <div id="credits" className="mb-10">
             {data.combined_credits.cast.length > 5 ? (

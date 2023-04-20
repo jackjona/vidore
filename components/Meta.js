@@ -13,7 +13,7 @@ const Meta = (props) => {
       : "Vidore - A free modern video discovery and streaming website that includes everything you'll ever need."
   }`;
 
-  const version = "041423";
+  const version = "042023";
   console.log(`%c Version: ${version}`, `color:green`);
 
   return (

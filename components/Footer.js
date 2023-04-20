@@ -6,7 +6,11 @@ const Footer = () => {
     <footer>
       <nav className="relative z-10 mt-24 bg-secondary px-4 lg:px-6 py-6">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link href="/" className="flex items-center">
+          <Link
+            href="/"
+            className="flex items-center"
+            aria-label="Click to go back home"
+          >
             <img
               src="/logo.png"
               width="128px"
