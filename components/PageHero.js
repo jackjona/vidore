@@ -181,7 +181,7 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
                   provider.results.US.flatrate.slice(0, 5).map((data, i) => (
                     <div
                       key={i}
-                      className="flex flex-col justify-center items-center text-center sm:ml-10 first:ml-0 w-full"
+                      className="flex flex-col justify-center items-center text-center sm:ml-10 first:ml-0 mb-2 w-full"
                     >
                       <img
                         className="rounded-lg"
@@ -199,7 +199,7 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
                   provider.results.US.buy.slice(0, 5).map((data, i) => (
                     <div
                       key={i}
-                      className="flex flex-col justify-center items-center text-center sm:ml-10 first:ml-0 w-full"
+                      className="flex flex-col justify-center items-center text-center sm:ml-10 first:ml-0 mb-2 w-full"
                     >
                       <img
                         className="rounded-lg"
