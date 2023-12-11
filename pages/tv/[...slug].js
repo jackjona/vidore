@@ -18,7 +18,7 @@ const Slug = ({ data, provider }) => {
 
   return (
     <>
-      <Meta />
+      <Meta title={data.name && data.name} />
       {/* Youtube Trailer Modal */}
       {openTrailer && (
         <TrailerOverlay

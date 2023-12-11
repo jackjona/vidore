@@ -5,7 +5,7 @@ import Link from "next/link";
 const Slug = ({ data }) => {
   return (
     <>
-      <Meta />
+      <Meta title={data.name && data.name} />
       <div
         id="hero"
         className="relative flex flex-col lg:flex-row justify-center items-center h-full mb-12 overflow-hidden text-center text-white lg:text-left px-12"

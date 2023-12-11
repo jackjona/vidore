@@ -15,10 +15,10 @@ const Slug = ({ data, provider }) => {
   const showTrailer = () => {
     !openTrailer ? setOpenTrailer(true) : setOpenTrailer(false);
   };
-
+  console.log(data);
   return (
     <>
-      <Meta />
+      <Meta title={data.original_title && data.original_title} />
       {/* Youtube Trailer Modal */}
       {openTrailer && (
         <TrailerOverlay
