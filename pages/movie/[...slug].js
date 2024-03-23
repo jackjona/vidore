@@ -15,7 +15,7 @@ const Slug = ({ data, provider }) => {
   const showTrailer = () => {
     !openTrailer ? setOpenTrailer(true) : setOpenTrailer(false);
   };
-  console.log(data);
+  /*   console.log(data); */
   return (
     <>
       <Meta title={data.original_title && data.original_title} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 
 const Meta = (props) => {
@@ -13,8 +13,20 @@ const Meta = (props) => {
       : "Vidore - A free modern video discovery and streaming website that includes everything you'll ever need."
   }`;
 
-  const version = "122023";
-  console.log(`%c Version: ${version}`, `color:green`);
+  const version = "2024.03.23";
+
+  useEffect(() => {
+    if (typeof sessionStorage !== "undefined") {
+      if (!sessionStorage.getItem("version")) {
+        console.log(`%c Version: ${version}`, `color:green`);
+        sessionStorage.setItem("version", version ? version : "true");
+      }
+    } else {
+      console.error(
+        "Error: sessionStorage is not available or not defined in this browser."
+      );
+    }
+  }, []);
 
   return (
     <Head>
