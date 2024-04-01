@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /
 Allow: /$
 Allow: /about
 Allow: /search
+Disallow: /
