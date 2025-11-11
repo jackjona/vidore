@@ -42,12 +42,13 @@ const TrailerOverlay = ({ data, loaded, loadCompleted, showTrailer }) => {
               .map((data, i) => (
                 <div key={i} className={`h-full w-full ${!loaded && "hidden"}`}>
                   <iframe
-                    title={data.name ? data.name : data.original_title}
+                    title={data.name || data.original_title}
                     src={`https://www.youtube-nocookie.com/embed/${data.key}`}
-                    allow="fullscreen; picture-in-picture"
+                    allow="fullscreen;encrypted-media;picture-in-picture;web-share"
                     height="100%"
                     width="100%"
-                    referrerPolicy="no-referrer"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                     onLoad={loadCompleted}
                   />
                 </div>
