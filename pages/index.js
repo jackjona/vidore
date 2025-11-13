@@ -14,7 +14,7 @@ export default function Home({
     <>
       <Meta />
       <main className="bg-black text-white text-center md:text-left">
-        <Hero data={trending?.results?.[0]} />
+        <Hero data={trending?.results?.slice(0, 5)} />
 
         <HomeSlider
           type="trending"
