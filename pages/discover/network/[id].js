@@ -61,15 +61,15 @@ export default function DiscoverNetwork() {
           No trending shows found for this network.
         </p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="flex flex-wrap justify-center">
           {shows.map((show) => (
             <div
               key={show.id}
-              className="bg-gray-900 rounded-md hover:scale-[1.02] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-10 shadow-md hover:shadow-lg"
+              className="bg-gray-900 rounded-md hover:scale-[1.02] transition-all duration-300 ease-in-out pb-4 mx-1 sm:mx-3 mt-10 shadow-md hover:shadow-lg w-[185px]"
             >
               <Link href={`/tv/${show.id}`}>
                 <img
-                  className="z-0 rounded-t-md drop-shadow-sm w-[185px] h-[278px] mx-auto hover:opacity-80 transition-all duration-500 ease-in-out object-cover"
+                  className="z-0 rounded-t-md drop-shadow-sm mx-auto hover:opacity-80 transition-all duration-500 ease-in-out object-cover"
                   src={
                     show.poster_path
                       ? `https://image.tmdb.org/t/p/w500${show.poster_path}`
@@ -82,9 +82,9 @@ export default function DiscoverNetwork() {
                 />
 
                 <div className="px-3 pt-3 text-center">
-                  <p className="text-base md:text-lg font-semibold line-clamp-2">
+                  <h2 className="md:text-lg font-semibold text-xl break-words line-clamp-2">
                     {show.name || show.original_name || show.original_title}
-                  </p>
+                  </h2>
                   <p className="text-sm text-gray-400 mt-1">
                     {show.first_air_date?.split("-")[0] || "—"}
                   </p>

@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md shadow-md">
+    <header className="sticky top-0 w-full z-50 bg-black/90 backdrop-blur-md shadow-md">
       <nav className="px-6 lg:px-12 py-4">
         <div className="flex items-center justify-between max-w-screen-xl mx-auto">
           <Link

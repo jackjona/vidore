@@ -13,7 +13,7 @@ const Meta = (props) => {
       : "Vidore - A free modern video discovery and streaming website that includes everything you'll ever need."
   }`;
 
-  const version = "2025.11.12";
+  const version = "2025.12.06";
 
   useEffect(() => {
     if (typeof sessionStorage !== "undefined") {
