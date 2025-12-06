@@ -21,3 +21,7 @@ select {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.scrollbar-hide {
+  overflow: -moz-scrollbars-none;
+  -webkit-overflow-scrolling: touch;
+}

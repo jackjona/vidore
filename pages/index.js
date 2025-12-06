@@ -1,6 +1,7 @@
 import HomeSlider from "@/components/HomeSlider";
 import Hero from "@/components/Hero";
 import Meta from "@/components/Meta";
+import NetworkSlider from "@/components/NetworkSlider";
 
 export default function Home({
   trending,
@@ -15,6 +16,8 @@ export default function Home({
       <Meta />
       <main className="bg-black text-white text-center md:text-left">
         <Hero data={trending?.results?.slice(0, 5)} />
+
+        <NetworkSlider />
 
         <HomeSlider
           type="trending"
@@ -69,7 +72,7 @@ export default function Home({
 }
 
 export async function getServerSideProps() {
-  const apiKey = process.env.TMBD_API_KEY;
+  const apiKey = process.env.TMDB_API_KEY;
 
   const endpoints = {
     trending: `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`,

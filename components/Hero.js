@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 
 const HomeHero = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   // Cycle through the items automatically
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,7 +12,7 @@ const HomeHero = ({ data }) => {
   }, [data.length]);
 
   return (
-    <div id="hero" className="relative md:h-[42rem] overflow-hidden">
+    <div id="hero" className="relative h-96 md:h-screen overflow-hidden">
       {data.map((item, i) => {
         const isActive = i === currentIndex;
         return (
@@ -28,10 +27,10 @@ const HomeHero = ({ data }) => {
           >
             <div
               id="hero"
-              className="relative flex flex-col md:flex-row justify-center items-center h-[36rem] md:h-[46rem] overflow-hidden text-center text-white md:text-left px-12"
+              className="relative flex flex-col md:flex-row justify-center items-center h-full overflow-hidden text-center text-white md:text-left px-6 md:px-12"
             >
               <img
-                className="absolute left-0 top-0 object-cover w-full h-full max-h-[36rem] md:max-h-[55rem] opacity-50 blur-sm z-0"
+                className="absolute inset-0 object-cover w-full h-full opacity-50 blur-sm z-0"
                 src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`}
                 alt={item.title || item.name || "Background"}
               />
@@ -43,7 +42,7 @@ const HomeHero = ({ data }) => {
                 }`}
               >
                 <img
-                  className="hidden md:block rounded-lg drop-shadow-2xl w-[300px] h-[370px] lg:w-[320px] lg:h-[480px] mt-10 md:-mt-0 hover:scale-105 transition-all duration-500 ease-in-out"
+                  className="hidden md:block rounded-lg drop-shadow-2xl w-48 h-64 md:w-72 md:h-96 lg:w-80 lg:h-[30rem] mt-10 md:mt-0 hover:scale-105 transition-all duration-500 ease-in-out"
                   src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                   alt={item.title || item.name || "Poster"}
                   loading="lazy"
@@ -52,13 +51,13 @@ const HomeHero = ({ data }) => {
                 />
               </Link>
 
-              <div className="relative md:ml-20 my-20 mx-2 md:pl-2 text-center md:text-left">
-                <h1 className="md:flex md:flex-wrap max-w-xl text-4xl md:text-5xl xl:text-6xl font-extrabold">
+              <div className="relative md:ml-20 my-10 md:my-20 mx-2 md:pl-2 text-center md:text-left">
+                <h1 className="max-w-xl text-3xl md:text-5xl xl:text-6xl font-extrabold">
                   {item.name ? item.name : item.original_title}
                 </h1>
 
                 <div className="flex justify-center md:justify-start items-center my-6">
-                  <div className="flex justify-center items-center font-normal ">
+                  <div className="flex items-center font-normal">
                     <svg
                       width="24"
                       height="24"
@@ -77,8 +76,8 @@ const HomeHero = ({ data }) => {
                   </div>
                   <span className="bg-gray-400 w-[2px] h-5 mx-2"></span>
                   <p className="text-lg">
-                    {item.vote_count}
-                    {item.vote_count === "1" ? " Review" : " Reviews"}
+                    {item.vote_count}{" "}
+                    {item.vote_count === 1 ? "Review" : "Reviews"}
                   </p>
                   <span className="bg-gray-400 w-[2px] h-5 mx-2"></span>
                   <p className="text-lg">
@@ -88,12 +87,12 @@ const HomeHero = ({ data }) => {
                   </p>
                 </div>
 
-                <p className="max-w-2xl md:max-w-xl max-h-48 whitespace-normal truncate text-lg font-medium">
+                <p className="max-w-2xl md:max-w-xl max-h-48 overflow-hidden text-lg font-medium">
                   {item.overview}
                 </p>
 
                 <Link href={`/${item.media_type}/${item.id}`}>
-                  <button className="mt-12 px-6 py-5 bg-primary rounded-lg hover:bg-sky-500 hover:rounded-xl transition-all duration-300 ease-in-out font-semibold">
+                  <button className="mt-8 px-6 py-4 bg-primary rounded-lg hover:bg-sky-500 hover:rounded-xl transition-all duration-300 ease-in-out font-semibold">
                     View Details
                   </button>
                 </Link>
@@ -102,7 +101,6 @@ const HomeHero = ({ data }) => {
           </div>
         );
       })}
-
       {/* Slide selection buttons */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {data.map((_, i) => (

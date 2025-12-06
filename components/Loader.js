@@ -13,9 +13,9 @@ const Loader = ({ full }) => {
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
       </div>
       <div className="mt-10">
-        <h1 className="animate-pulse text-lg font-md text-gray-900 dark:text-gray-100">
+        {/*   <h1 className="animate-pulse text-lg font-md text-gray-900 dark:text-gray-100">
           Loading...
-        </h1>
+        </h1> */}
       </div>
     </div>
   );
