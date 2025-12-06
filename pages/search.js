@@ -11,7 +11,7 @@ function Search() {
 
   const handleFetch = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMBD_API_KEY}&language=en-US&query=${inputValue}&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&query=${inputValue}&page=1&include_adult=false`
     );
     const data = await response.json();
     setData(data);

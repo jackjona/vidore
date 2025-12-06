@@ -157,7 +157,7 @@ const PageHero = ({ data, provider, showTrailer, tv, movie }) => {
             </p>
           )}
           <p className="max-w-xl max-h-48 text-md text-gray-200 font-normal my-1">
-            <span className="font-semibold">TMBD ID:</span> {data.id}
+            <span className="font-semibold">TMDB ID:</span> {data.id}
           </p>
         </div>
         {provider.results.US && (

@@ -30,7 +30,7 @@ const About = () => {
             <h2>Vidore is a modern video discovery and streaming website.</h2>
             <br />
             <div className="flex flex-col justify-center items-center text-gray-300 text-sm">
-              <img src="/tmbd.svg" width="96" height="96" alt="" />
+              <img src="/tmdb.svg" width="96" height="96" alt="" />
               <p>
                 This product uses the TMDB API but is not endorsed or certified
                 by{" "}
@@ -40,7 +40,7 @@ const About = () => {
                   rel="noreferrer"
                   className="underline hover:text-yellow-400"
                 >
-                  TMBD
+                  TMDB
                 </Link>
                 .
               </p>

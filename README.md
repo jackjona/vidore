@@ -14,7 +14,7 @@ A Modern Video Discovery & Streaming Site. <br />
 - Next.js
 - React
 - TailwindCSS
-- TMBD API
+- TMDB API
 
 ---
 
@@ -33,7 +33,7 @@ npm install
 yarn install
 ```
 
-2. Input your [TMBD API](https://developers.themoviedb.org/3/getting-started/introduction) key and rename `.env.local.example` to `env.local`
+2. Input your [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) key and rename `.env.local.example` to `env.local`
 
 3. Run the development server:
 
