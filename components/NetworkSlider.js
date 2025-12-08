@@ -14,10 +14,16 @@ export default function NetworkSlider() {
   }, []);
 
   return (
-    <div className="flex justify-center overflow-x-scroll space-x-4 p-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+    <div
+      id="networkSlider"
+      className="flex justify-center overflow-x-scroll overflow-y-auto no-scrollbar scrollbar-hide space-x-4 p-4 snap-x snap-mandatory scroll-smooth"
+    >
       {networks.map(({ id, name, logo }) => (
         <Link href={`/discover/network/${id}`} key={id}>
-          <div className="group flex flex-col items-center p-4 mt-6 bg-gray-900 rounded-lg hover:bg-gray-800 transition cursor-pointer flex-shrink-0 snap-center w-40">
+          <div
+            id="networkSlideCard"
+            className="group flex flex-col items-center p-4 mt-6 bg-gray-900 rounded-lg hover:bg-gray-800 transition cursor-pointer flex-shrink-0 snap-center w-40"
+          >
             <img
               src={logo}
               alt={name}
